@@ -48,6 +48,9 @@ stages:
         inputs:
           buildType: 'current'
           artifactName: 'manifests'
+          itemPattern: |
+            **/*.yml
+            **/*.yaml
           targetPath: '$(Pipeline.Workspace)/manifests'
 
       - task: KubernetesManifest@0
@@ -64,5 +67,5 @@ stages:
           kubernetesServiceConnection: 'K8S_Example_cluster-default'
           namespace: 'default'
           manifests: |
-            $(Pipeline.Workspace)/manifests/deployment.yaml
-            $(Pipeline.Workspace)/manifests/service.yaml
+            $(Pipeline.Workspace)/manifests/deployment.yml
+            $(Pipeline.Workspace)/manifests/service.yml
