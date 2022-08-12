@@ -16,14 +16,10 @@ spec:
         - name: sampleapp 
           image: k8sexamplesacr.azurecr.io/sampleapp
           ports:
-        - name: liveness-port
-          containerPort: 8000
-          resources: #CHANGE
-          requests:
-            cpu: 100m
-            memory: 512Mi
-          limits:
-            cpu: 500m
-            memory: 1024Mi #256Mi 
+          - containerPort: 80
           readinessProbe:
+            httpGet:
+              path: /
+              port: 32498
+
           
